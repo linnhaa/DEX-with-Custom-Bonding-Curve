@@ -26,6 +26,4 @@ yarn hardhat run scripts/deploy_token.js --network localhost
 
 Copy your abi, smart contract's address (You can find them in folder `artifacts/contracts/contract_name.sol`)
 
-Run `web_app/index.html`
 
-![demo](demo.png)
