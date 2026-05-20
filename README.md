@@ -1,4 +1,4 @@
-## Stanford University, CS251 Project 4: Building a DEX
+## Blockchain Project: DEX with Custom Bonding Curve
 
 Install package
 
