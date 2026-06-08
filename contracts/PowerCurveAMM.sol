@@ -50,10 +50,8 @@ contract PowerCurveAMM is ERC20, ReentrancyGuard {
     function swap(
         address tokenIn, 
         uint256 amountIn, 
-        uint256 minAmountOut, 
-        uint256 deadline
+        uint256 minAmountOut
     ) external nonReentrant returns (uint256 amountOut) {
-        require(block.timestamp <= deadline, "Expired");
         require(amountIn > 0, "Zero amount");
         require(tokenIn == address(token0) || tokenIn == address(token1), "Invalid token");
         
@@ -105,10 +103,8 @@ contract PowerCurveAMM is ERC20, ReentrancyGuard {
     /// @notice Add liquidity and mint LP tokens
     function addLiquidity(
         uint256 amount0, 
-        uint256 minShares, 
-        uint256 deadline
+        uint256 minShares
     ) external nonReentrant returns (uint256 shares) {
-        require(block.timestamp <= deadline, "Expired");
         require(amount0 > 0, "Zero amount");
 
         uint256 amount1;
@@ -146,10 +142,8 @@ contract PowerCurveAMM is ERC20, ReentrancyGuard {
     function removeLiquidity(
         uint256 shares, 
         uint256 minAmount0, 
-        uint256 minAmount1, 
-        uint256 deadline
+        uint256 minAmount1
     ) external nonReentrant returns (uint256 amount0, uint256 amount1) {
-        require(block.timestamp <= deadline, "Expired");
         require(shares > 0, "Remove zero");
 
         uint256 totalShares = totalSupply();
