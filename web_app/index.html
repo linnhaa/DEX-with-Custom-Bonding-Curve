@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenSwap DEX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <header>
+        <div class="logo">Zen<span class="highlight">Swap</span></div>
+        <div class="account-selector">
+            <select id="myaccount" class="account">
+                <option value="">Loading accounts...</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <div class="dashboard">
+            <!-- Pool Status Panel -->
+            <div class="glass-panel pool-info">
+                <h2>Pool Status (Power Curve: P = A * x²)</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-label">Reserve X</span>
+                        <span id="reserve0" class="stat-value">-- X</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Reserve Y</span>
+                        <span id="reserve1" class="stat-value">-- Y</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Price of X</span>
+                        <span id="price0" class="stat-value">--</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Price of Y</span>
+                        <span id="price1" class="stat-value">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interaction-container">
+                <!-- Swap Panel -->
+                <div class="glass-panel swap-panel">
+                    <h2>Swap</h2>
+                    
+                    <div class="input-group">
+                        <label>Pay</label>
+                        <div class="token-input">
+                            <select id="swap-token-in">
+                                <option value="token1">X</option>
+                                <option value="token2">Y</option>
+                            </select>
+                            <input type="number" id="swap-amount" placeholder="0.0">
+                        </div>
+                    </div>
+
+                    <div class="connector-arrow">↓</div>
+
+                    <div class="input-group">
+                        <label>Receive (Est.)</label>
+                        <div class="token-input readonly">
+                            <span id="receive-asset">Y</span>
+                            <span id="receive-amount">0.0</span>
+                        </div>
+                    </div>
+
+                    <button id="btn-swap" class="btn-primary">Swap</button>
+                </div>
+
+                <!-- Liquidity Panel -->
+                <div class="glass-panel liquidity-panel">
+                    <h2>My Account & Liquidity</h2>
+                    <div class="balance-info">
+                        <p>X Balance: <span id="balance0" class="highlight">--</span></p>
+                        <p>Y Balance: <span id="balance1" class="highlight">--</span></p>
+                        <p>LP Balance: <span id="lp-balance" class="highlight">--</span></p>
+                    </div>
+
+                    <div class="liquidity-controls">
+                        <h3>Provide Liquidity</h3>
+                        <div class="input-pair">
+                            <input type="number" id="add-liq-amount0" placeholder="X Amount">
+                        </div>
+                        <button id="btn-add-liq" class="btn-secondary">Add Liquidity</button>
+
+                        <h3>Remove Liquidity</h3>
+                        <div class="input-pair">
+                            <input type="number" id="remove-liq-shares" placeholder="LP Amount">
+                        </div>
+                        <button id="btn-remove-liq" class="btn-secondary">Remove Liquidity</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Dependencies -->
+    <script src="../node_modules/ethers/dist/ethers.umd.min.js"></script>
+    <script src="./abi.js"></script>
+    <script src="./exchange.js"></script>
+</body>
+</html>
